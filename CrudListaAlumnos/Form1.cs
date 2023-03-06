@@ -69,14 +69,12 @@ namespace CrudListaAlumnos
                 textEdad.Clear();
                 textEdad.Focus();
                 return false;
-
             }
             else
             {
                 erpError.SetError(textEdad, "");
                 return true;
             }
-
 
         }
         private bool Validardatos()
@@ -105,14 +103,12 @@ namespace CrudListaAlumnos
             dgvDatos.DataSource = LAlumnos;
         }
         //Detectar el registro que se selecciona en la tabla de datos
-
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewCell cell = dgvDatos.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 object valorCelda = cell.Value;
-
                 // Mostrar los valores de la fila seleccionada en las cajas de texto
                 DataGridViewRow filaSeleccionada = dgvDatos.Rows[e.RowIndex];
                 textNombre.Text = filaSeleccionada.Cells[0].Value.ToString();
@@ -124,30 +120,7 @@ namespace CrudListaAlumnos
                 btnGuardar.Enabled = false;
             }
         } 
-        /*
-
-            private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-            int rowIndex = e.RowIndex; // Obtener el índice de la fila seleccionada
-            int columnIndex = e.ColumnIndex; // Obtener el índice de la columna seleccionada
-
-            if (rowIndex >= 0 && columnIndex >= 0) // Verificar que se ha seleccionado una celda válida
-            {
-                // Mostrar los valores de la fila seleccionada en las cajas de texto
-                DataGridViewRow filaSeleccionada = dgvDatos.Rows[e.RowIndex];
-                textNombre.Text = filaSeleccionada.Cells[0].Value.ToString();
-                textCorreo.Text = filaSeleccionada.Cells[1].Value.ToString();
-                textEdad.Text = filaSeleccionada.Cells[2].Value.ToString();
-                //Activar la opción de borrar
-                btnBorrar.Enabled = true;
-                btnActualizar.Enabled = true;
-                btnGuardar.Enabled = false;
-            }
-
-        }*/
-
+ 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             // Obtener los datos actualizados de las cajas de texto
@@ -173,7 +146,6 @@ namespace CrudListaAlumnos
             // Buscar el objeto correspondiente en la lista y actualizar sus propiedades
             Alumnos alumnos = LAlumnos.Find(a => a.Nombre == nombre);
             LAlumnos.Remove(alumnos);
-
             //Indicamos que se realizo la tarea y desactivamos botones
             MessageBox.Show("Se elimino el registros");
             LimpiarCajas();
